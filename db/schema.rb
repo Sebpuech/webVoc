@@ -14,17 +14,18 @@
 ActiveRecord::Schema.define(:version => 20130702202525) do
 
   create_table "chapter_tests", :force => true do |t|
-    t.integer  "chapter_id_id"
+    t.integer  "chapter_id"
     t.datetime "start_at"
     t.datetime "end_at"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
-  add_index "chapter_tests", ["chapter_id_id"], :name => "index_chapter_tests_on_chapter_id_id"
+  add_index "chapter_tests", ["chapter_id"], :name => "index_chapter_tests_on_chapter_id"
 
   create_table "chapters", :force => true do |t|
     t.string   "title"
+    t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -53,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20130702202525) do
   add_index "users", ["username"], :name => "index_users_on_username"
 
   create_table "words", :force => true do |t|
+    t.integer  "user_id"
     t.integer  "chapter_id"
     t.string   "source_word"
     t.string   "target_word"
